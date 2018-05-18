@@ -1,0 +1,278 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Trailer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tractor.tscn" type="PackedScene" id=4]
+
+[sub_resource type="PlaneShape" id=1]
+
+plane = Plane( 0, 1, 0, 0 )
+
+[sub_resource type="PlaneMesh" id=2]
+
+size = Vector2( 2, 2 )
+subdivide_width = 0
+subdivide_depth = 0
+
+[sub_resource type="SpatialMaterial" id=3]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.245911, 0.303923, 0.617188, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo" ]
+
+[node name="Main" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
+
+transform = Transform( 0.998224, 0.00323401, 0.0594891, -0.0595769, 0.0541865, 0.996752, 0, -0.998526, 0.0542829, 4.25815, 4.19094, 3.06169 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 2.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light", "Shadow" ]
+
+[node name="camera" type="Spatial" parent="." index="1"]
+
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 0, -5.06497, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="base" type="Spatial" parent="camera" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3095, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="rotation" type="Spatial" parent="camera/base" index="0"]
+
+transform = Transform( -3.9616e-08, -0.422618, 0.906308, -1.84732e-08, 0.906308, 0.422618, -1, 0, -4.37114e-08, 7.57196, 3.1446, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="camera" type="Camera" parent="camera/base/rotation" index="0"]
+
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 65.0
+size = 1.0
+near = 0.1
+far = 200.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Control" type="Control" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="trailer_info" type="Button" parent="Control" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 816.0
+margin_top = 55.0
+margin_right = 886.0
+margin_bottom = 75.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Panel" type="Panel" parent="Control" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 868.0
+margin_top = 551.0
+margin_right = 1018.0
+margin_bottom = 593.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="Control/Panel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 151.0
+margin_bottom = 43.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Material", "Rect" ]
+
+[node name="Trailer" parent="." index="3" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.23658, -9.1481 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="Cube" parent="Trailer" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0971e-07, 0.416542, -1.21348 )
+
+[node name="ConeTwistJoint" type="ConeTwistJoint" parent="." index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955395, -3.73389 )
+nodes/node_a = NodePath("")
+nodes/node_b = NodePath("")
+solver/priority = 1
+collision/exclude_nodes = true
+swing_span = 90.0
+twist_span = 45.0
+bias = 0.3
+softness = 0.8
+relaxation = 2.0
+_sections_unfolded = [ "angular_limit_x", "angular_limit_y", "angular_limit_z", "collision", "nodes", "solver" ]
+
+[node name="Ground" parent="." index="5" instance=ExtResource( 3 )]
+
+transform = Transform( 4.61996, 0, 0, 0, 4.61996, 0, 0, 0, 4.61996, 0, 23.8469, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="." index="6"]
+
+transform = Transform( 600, 0, 0, 0, 600, 0, 0, 0, 600, 0, -14.2363, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+
+transform = Transform( -0.118302, 0, 0, 0, -0.118302, 0, 0, 0, -0.118302, 0, 0, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody" index="1"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = SubResource( 3 )
+_sections_unfolded = [ "material" ]
+
+[node name="Tractor" parent="." index="7" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.27307, 0 )
+
+
+[editable path="Trailer"]

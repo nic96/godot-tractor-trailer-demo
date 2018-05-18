@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Models/Trailers/trailer.dae" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 1, 1, 1 )
+
+[node name="Trailer" instance=ExtResource( 1 )]
+
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="wheel_rear_left" parent="." index="2"]
+
+wheel_radius = 0.41
+suspension_travel = 1.0
+suspension_stiffness = 30.0
+_sections_unfolded = [ "Suspension", "Wheel" ]
+
+[node name="wheel_rear_right" parent="." index="3"]
+
+wheel_radius = 0.41
+suspension_travel = 1.0
+suspension_stiffness = 30.0
+_sections_unfolded = [ "Suspension", "Wheel" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.98679, 0, 1.66904, 0.10221 )
+shape = SubResource( 1 )
+disabled = false
+
+[node name="Hitch" type="Area" parent="." index="5"]
+
+transform = Transform( 0.187486, 0, 0, 0, 0.187486, 0, 0, 0, 0.187486, 0, 0.789306, 4.08804 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 2
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Hitch" index="0"]
+
+shape = SubResource( 2 )
+disabled = false
+
+
